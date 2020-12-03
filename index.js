@@ -1,6 +1,6 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
-const util = require("util");
+// const util = require("util");
 
 const generatorMarkdown = require("./utils/generateMarkdown");
 
@@ -10,10 +10,10 @@ const questions = [{
     type: 'input',
     message: "What is your GitHub username?",
     name: 'username',
-},{   
-    type: 'input',
-    message: "What is the name of your GitHub repo?",
-    name: 'repo',
+// },{   
+//     type: 'input',
+//     message: "What is the name of your GitHub repo?",
+//     name: 'repo',
 }, {    
     type: "input",
     message: "What is the title of the project?",
@@ -24,15 +24,11 @@ const questions = [{
     name: "Description"
 }, {
     type: "input",
-    message: "Table of Contents.",
-    name: "Table of Contents"
-}, {
-    type: "input",
-    message: "How does the user install the app?",
+    message: "What necessary dependencies must be installed to run this app?",
     name: "Installation"
 }, {
     type: "input",
-    message: " Give instructions on how to use the app.",
+    message: " What is app used for?",
     name: "Usage"
 }, {
     type: "list",
@@ -41,18 +37,18 @@ const questions = [{
     name: "License"
 }, {
     type: "input",
-    message: "Who else contributed to this project?:",
+    message: "Who contributed to this project?:",
     name: "Contributing"
 }, {
     type: "input",
     message: "What is needed test this app?",
-    name: "Tests"
-}, {
-    type: "input",
-    message: "Contact information for any inquiries.",
-    name: "Questions"
+    name: "Test"
+ }, {
+//     type: "input",
+//     message: "Contact information for any inquiries.",
+//     name: "Questions"
 
-}, {
+// }, {
     type: 'input',
     message: 'What is your email address?',
     name: 'Email'
@@ -68,9 +64,9 @@ function writeToFile(fileName, data) {
         console.log(fileName)
         console.log(data)
         if (err){
-            return console.log(err)
+            return console.log(err);
         } else{
-            console.log("README.md was created")
+            console.log("README.md was created");
         }
     })
 }
@@ -79,7 +75,7 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
         .then(function(data){
-            writeToFile("README.md",generatorMarkdown(data))
+            writeToFile("README.md",generatorMarkdown(data));
             console.log(data)
         })
 }
