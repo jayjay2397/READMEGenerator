@@ -20,7 +20,7 @@ const questions = [{
     name: "Title"
 }, {
     type: "input",
-    message: "What is the project about? Give a detailed description of your project?",
+    message:  "Give a detailed description of your project.",
     name: "Description"
 }, {
     type: "input",
@@ -28,11 +28,11 @@ const questions = [{
     name: "Table of Contents"
 }, {
     type: "input",
-    message: "What does the user need to install to run this app (ie...dependencies)?",
+    message: "How does the user install the app?",
     name: "Installation"
 }, {
     type: "input",
-    message: "How is the app used? Give instructions",
+    message: " Give instructions on how to use the app.",
     name: "Usage"
 }, {
     type: "list",
@@ -41,15 +41,15 @@ const questions = [{
     name: "License"
 }, {
     type: "input",
-    message: "Who contributed to this project?:",
+    message: "Who else contributed to this project?:",
     name: "Contributing"
 }, {
     type: "input",
-    message: "What commands are needed to test this app?",
+    message: "What is needed test this app?",
     name: "Tests"
 }, {
     type: "input",
-    message: "Contact info for inquiries.",
+    message: "Contact information for any inquiries.",
     name: "Questions"
 
 }, {
@@ -70,7 +70,7 @@ function writeToFile(fileName, data) {
         if (err){
             return console.log(err)
         } else{
-            console.log("Success")
+            console.log("README.md was created")
         }
     })
 }
@@ -79,7 +79,8 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
         .then(function(data){
-            writeToFile("README.md",)
+            writeToFile("README.md",generatorMarkdown(data))
+            console.log(data)
         })
 }
 
